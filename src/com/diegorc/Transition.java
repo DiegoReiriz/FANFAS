@@ -1,4 +1,4 @@
-package com.company;
+package com.diegorc;
 
 /**
  * Created by Diego Reiriz Cores on 1/10/15.

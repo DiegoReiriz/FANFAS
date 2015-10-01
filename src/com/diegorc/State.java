@@ -1,4 +1,4 @@
-package com.company;
+package com.diegorc;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -10,7 +10,7 @@ public class State {
     private List<Transition> transitions;
 
     public List<State> newInput(char input){
-        List<State> newStates=new LinkedList<State>();
+        List<State> newStates=new LinkedList<>();
         transitions.forEach(transition -> {
             if (transition.isEmptyTransition() || transition.getInput() == input)
                 newStates.add(transition.getTransition());
@@ -19,8 +19,7 @@ public class State {
         return newStates;
     }
 
-    public State(List<State> successors, List<Transition> transitions) {
-        this.successors = successors;
+    public State(List<Transition> transitions) {
         this.transitions = transitions;
     }
 
