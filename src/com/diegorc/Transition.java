@@ -5,10 +5,10 @@ package com.diegorc;
  */
 public class Transition {
     private boolean emptyTransition;
-    private char input;
+    private Simbolo input;
     private State transition;
 
-    public char getInput() {
+    public Simbolo getInput() {
         return input;
     }
 
@@ -25,11 +25,10 @@ public class Transition {
         this.transition = transition;
     }
 
-    public Transition(char input, State transition) {
+    public Transition(Simbolo input, State transition) {
         this.emptyTransition = false;
         this.input = input;
         this.transition = transition;
     }
-
 
 }
