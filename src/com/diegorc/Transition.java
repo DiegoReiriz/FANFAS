@@ -9,15 +9,15 @@ public class Transition {
     private State transition;
 
     public Simbolo getInput() {
-        return input;
+        return this.input;
     }
 
     public State getTransition() {
-        return transition;
+        return this.transition;
     }
 
     public boolean isEmptyTransition() {
-        return emptyTransition;
+        return this.emptyTransition;
     }
 
     public Transition(State transition) {
