@@ -42,7 +42,8 @@ public class State {
     public List<State> newInput(Simbolo input){
         List<State> newStates=new LinkedList<>();
         transitions.forEach(transition -> {
-            if (transition.isEmptyTransition() || transition.getInput().get().matches(input.get()))
+            //if (transition.isEmptyTransition() || transition.getInput().get().matches(input.get()))
+            if (!transition.isEmptyTransition() && transition.getInput().get().matches(input.get()))
                 newStates.add(transition.getTransition());
         });
 

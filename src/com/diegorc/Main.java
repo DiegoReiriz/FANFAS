@@ -12,6 +12,7 @@ public class Main {
 
     public static void readFile(Path path,List<State> estados,List<Simbolo> language){
         try {
+
             BufferedReader bf = Files.newBufferedReader(path);
 
             String data;
@@ -86,8 +87,29 @@ public class Main {
             }
 
         }catch (Exception e){
+            System.err.println("Error al leer el archivo");
             System.err.println(e.toString());
         }
+    }
+
+    //comprueba que la cadena que se
+    public static boolean checkStringInLanguage(List<Simbolo> language, String cadena){
+        boolean success=false;
+
+        for (int i = 0; i < cadena.toCharArray().length; i++) {
+            success=false;
+
+            for (int j = 0; j < language.size(); j++) {
+                if(String.valueOf(cadena.toCharArray()[i]).matches(language.get(j).get()))
+                    success=true;
+            }
+
+            if(success == false)
+                return success;
+
+        }
+
+        return success;
     }
 
     public static void main(String[] args) {
@@ -101,10 +123,15 @@ public class Main {
             readFile(path,estados,language);
 
             //TODO: String cadena=args[1]
-            String cadena= "01";
-
+            String cadena= "110";
             List<State> estadosActuales= new LinkedList<>();
             List<State> estadosAuxiliares=new LinkedList<>();
+
+
+            if(checkStringInLanguage(language,cadena) != true) {
+                System.err.println("La cadena introducida contiene elementos que no forman parte del lenguaje");
+                return;
+            }
 
             estadosActuales.addAll(estados.get(0).clausure());
 
@@ -126,13 +153,15 @@ public class Main {
                 }
 
                 estadosActuales.removeAll(estadosActuales);
+
                 estadosAuxiliares.forEach(estado ->{
                     estadosActuales.add(estado);
                 });
+
                 estadosAuxiliares.removeAll(estadosAuxiliares);
             }
 
-            boolean success=false;
+        boolean success=false;
 
         for (int u = 0; u < estadosActuales.size() && !success; u++) {
             if(estadosActuales.get(u).isFinal())
@@ -144,7 +173,6 @@ public class Main {
         else
             System.out.println("CADENA RECHAZADA");
 
-            System.out.println("LISTO");
         //TODO:}
     }
 }
