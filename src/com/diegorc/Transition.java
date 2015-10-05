@@ -4,9 +4,9 @@ package com.diegorc;
  * Created by Diego Reiriz Cores on 1/10/15.
  */
 public class Transition {
-    private boolean emptyTransition;
-    private Simbolo input;
-    private State transition;
+    private boolean emptyTransition; //It's an empty transition
+    private Simbolo input;          //input needed for the transition
+    private State transition;       //state obtained from the transition
 
     public Simbolo getInput() {
         return this.input;
